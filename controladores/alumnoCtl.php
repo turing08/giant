@@ -1,4 +1,5 @@
 <?php
+
  class alumnoCtrl
  {
 	 public $controlador;
@@ -6,6 +7,12 @@
 	 }
 	 function determinacion($tipo=1){
 		 ///var_dump($_POST['Selecccior']);
+		 //require('controladores/alumnoSeccionCtrl.php');
+		 //if($_SESSION['authuser']==0)
+		 //include('vistas/loginVista.htm');
+		//include('alumnoSeccionClt-php');
+		 //if($_SESSION['authuser']==1)
+		 //{
 		 if($tipo==1 ){
 			 require('vistas/decisionInicio.htm');
 			 switch($_POST['decisionInicial']){
@@ -27,12 +34,15 @@
 			 break;
 			 case 'Calificaciones':
 			 echo 'Calificaciones...';
+			 require('vistas/opcionCalificacionesVista.htm');
 			 break;
 			 case 'Asistencias':
 			 echo 'Asistencias...';
+			 require('vistas/opcionAsistenciasVista.htm');
 			 break;
 			 case 'Listas':
 			 echo 'Listas...';
+			  require('vistas/opcionListaVista.htm');
 			 break;
 		 }
 		 }
@@ -286,6 +296,161 @@
 			 echo "Se procedera a modificar el ciclo escolar";
 			 var_dump($_POST['nombre']);
 		 }
-	 }
+
+
+		 /*validar calificaciones numéricas sobre 10 aceptando 1 decimal. Se permite también la nomenclatura NP y SD las cuales son interpretadas como 0 para los cálculos.*/
+		 if($_POST['id']==22){
+			 switch($_POST['opcionCalificaciones']){
+				 case 'calificacionesAlumno':
+				 require('vistas/calificacionesAlumno.htm');
+				 break;
+				 case 'calificacionesCurso':
+				 echo "calificacion esCurso";
+				 require('vistas/calificacionesCursoVista.htm');
+				 break;
+				 case 'calificacionesrublo':
+				 echo "calificacionesrublo";
+				 //require('vistas/.htm');
+				 break;
+			 }
+		 }
+
+		 //id=23 por alumno comprobar que  el alumno este o  que
+		 // el codigo sea correcto para darlo de alta
+		 if($_POST['id']==23){
+			 var_dump($_POST['codigo']);
+			 //verificar el codigo para proceder a dar de alta , modificar ,baja y consulta
+			 switch($_POST['Submit']){
+				 case 'Alta':
+				 echo '<br/>'. $_POST['Submit'];
+				 require('vistas/altaCalificacionVista.htm');
+				 break;
+				 case 'Baja':
+				 echo '<br/>'. $_POST['Submit'];
+				 require('vistas/bajaCalificacionAlumnoVista.htm');
+				 break;
+				 case 'Consultar':
+				 echo '<br/>'. $_POST['Submit'];
+				 require('vistas/consultaCalificacionAlumnoVista.htm');
+				 break;
+				 case 'Modificar':
+				 echo '<br/>'. $_POST['Submit'];
+				 require('vistas/modificaCalificacionAlumnoVista.htm');
+				 break;
+			 }
+		 }
+
+		 //id=24 calificaciones por curso
+		 if($_POST['id']==24){
+			 var_dump($_POST['curso']);
+			 //verificar el curso para proceder a dar de alta , modificar ,baja y consulta
+			 switch($_POST['Submit']){
+				 case 'Alta':
+				 echo '<br/>'. $_POST['Submit'];
+				 require('vistas/altaCalificacionCursoVista.htm');
+				 break;
+				 case 'Baja':
+				 echo '<br/>'. $_POST['Submit'];
+				 require('vistas/bajaCalificacionCursoVista.htm');
+				 break;
+				 case 'Consultar':
+				 echo '<br/>'. $_POST['Submit'];
+				 require('vistas/consultaCalificacionCursoVista.htm');
+				 break;
+				 case 'Modificar':
+				 echo '<br/>'. $_POST['Submit'];
+				 require('vistas/modificaCalificacionCursoVista.htm');
+				 break;
+			 }
+		 }
+
+			 ///Falta rublo id 25
+
+			 //id=26 alta calificacion
+		 if($_POST['id']==26){
+			 //verificar si  los campos están bien escricturados
+			 //verificar que el alumno no este ya en la base de datos
+			 echo '<br/>';
+			 var_dump($_POST['codigo']);
+			 echo '<br/>Se procedera a dar de alta la calificacion del alumno '. $_POST['nombre'];
+		 }
+
+		 //id=27 a dar de alta
+		 if($_POST['id']==27){
+			 echo'<br/> Se procedera a dar de alta la calificacion del alumno';
+		 }
+
+		 //id=28 para para dar de baja calificaciones de alumno
+		 if($_POST['id']==28){
+			 echo '<br/>  dar de baja el alumno con el codigo'. $_POST['codigo'];
+		 }
+
+		 //id=29 consultar calificacion alumno
+		 if($_POST['id']==29){
+			 echo '<br/> Se procedera a consultar la calificacion del alumno';
+		 }
+
+		 //id=30 modificar el alumno de calificaciones
+		 if($_POST['id']==30){
+			 echo '<br/> se procedera a  modificar la calificacion del alumno';
+		 }
+
+		 //id=31 dar de baja el curso de calificaciones
+		 if($_POST['id']==31){
+			 echo '<br> se procedera a dar de baja la calificacion del alumno';
+		 }
+
+		 //id=32 consulta calificaciones curso
+		 if($_POST['id']==32){
+			 echo '<br> se procedera a consultar  la calificacion del alumno';
+		 }
+
+		 //id= 32 modificar calificaciones del curso
+		 if($_POST['id']==33){
+			 echo '<br> se procedera a consultar  la calificacion del alumno';
+		 }
+
+		 //id=34 ASISTENCIA opciones
+		 if($_POST['id']==34){
+			 switch($_POST['opcionAsistencia']){
+				 case 'asistenciaAlumno':
+				 echo 'es: '. $_POST['opcionAsistencia'];
+				 require('vistas/asistenciaAlumno.htm');
+				 break;
+				 case 'asistenciaCurso':
+				 var_dump($_POST['opcionAsistencia']);
+				 //require('vistas/calificacionesCursoVista.htm');
+				 break;
+			 }
+		 }
+
+		 //id 35 asistencia por alumno
+		 if($_POST['id']==35){
+			 echo 'Asistencia por alumno';
+
+		 }
+
+
+		 ///Listar alumnos
+		 if($_POST['id']==40){
+			 switch($_POST['opcionLista']){
+				 case 'Alta':
+				 echo 'Alta...';
+				 break;
+				 case 'Consulta':
+				 echo 'Consulta...';
+				 require('vistas/consultaListaVista.htm');
+				 break;
+			 }
+		 }
+
+
+		//ver alumnos lista
+		 if($_POST['id']==41){
+			 echo '<br/> Los alumnos son:';
+
+		 }
+		 }
+	 //}
  }
 ?>

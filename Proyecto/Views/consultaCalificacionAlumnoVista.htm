@@ -1,0 +1,32 @@
+
+
+
+<html>
+	<head><title></title>
+	</head>
+	<body>
+		<form method="post" action="http://localhost/Proyecto/index.php">
+			<table border='0' cellspacing=1 cellpadding=3 bgcolor='#209500'>
+					<tr><td colspan="5"  align="center">
+						<font align="center" color="#993366" size="4" face="Comic Sans MS, Arial, MS Sans
+						Serif">Calificaciones por el curso <?php echo $_POST['codigo']; ?>  consultar</font>
+						</td>
+					</tr>
+					<tr align="center">
+						<th>Codigo</th>
+						<th>Nombre</th>
+						<th>Tipo</th> <!--Tipo se refiere a si es Prueba,Examen -->
+						<th>Calificacion</th>
+					</tr>
+					<tr align= 'center'>
+						<td><input type='text' name='codigo'></td>
+						<td><input type='text' name='Nombre'> </td>
+						<td><input type='text' name='Tipo'></td>
+						<td><input type='text' name='Calificacion'></td>
+					</tr>
+			</table>
+			<input type="hidden" name="ctrl" value="Calificaciones"/>
+		<input type="hidden" name="act" value="consultaAlumno"/>
+		<input type='Submit' name='alta' value='consulta calificacion'>
+	</body>
+</html>
